@@ -17,9 +17,9 @@ To use the Caesar Cipher program, follow these steps:
 git clone https://github.com/luckyklyist/Caesar-Cipher
 ```
 2. Open the terminal or command prompt and navigate to the directory containing the files.
-3. Run the command `python caesar_cipher.py` to start the program.
+3. Run the command `python caesar.py` to start the program.
 ```
-python caesar_cipher.py
+python caesar.py
 ```
 
 
