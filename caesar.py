@@ -1,5 +1,6 @@
 import os
 
+
 def welcome():
     print("Welcome to the Caesar Cipher")
     print("This program encrypts and decrypts text with the Caesar Cipher.")
@@ -11,7 +12,10 @@ def encrypt(store_value):
     encrypt_message = ""
 
     for msg in message:
-        encrypt_message += chr(ord(msg) + shift)
+        if msg == " ":
+            encrypt_message += msg
+        else:
+            encrypt_message += chr(ord(msg) + shift)
 
     write_message(encrypt_message)
     print("Encrypted message:", encrypt_message)
@@ -23,7 +27,10 @@ def decrypt(store_value):
     decrypt_message = ""
 
     for msg in message:
-        decrypt_message += chr(ord(msg) - shift)
+        if msg == " ":
+            decrypt_message += msg
+        else:
+            decrypt_message += chr(ord(msg) - shift)
 
     write_message(decrypt_message)
     print("Decrypted message:", decrypt_message)
@@ -37,13 +44,19 @@ def process_file(filename, mode, shift):
         if mode == "e":
             encrypt_message = ""
             for m in msg:
-                encrypt_message += chr(ord(m) + shift)
+                if m == " ":
+                    encrypt_message += m
+                else:
+                    encrypt_message += chr(ord(m) + shift)
             write_message(encrypt_message)
             print("Encrypted message:", encrypt_message)
         elif mode == "d":
             decrypt_message = ""
             for m in msg:
-                decrypt_message += chr(ord(m) - shift)
+                if m == " ":
+                    decrypt_message += m
+                else:
+                    decrypt_message += chr(ord(m) - shift)
             write_message(decrypt_message)
             print("Decrypted message:", decrypt_message)
 
@@ -70,10 +83,10 @@ def message_or_file():
             print("Invalid mode.")
             continue
 
-        
-
         while True:
-            reading_mode = input("Would you like to read from a file (f) or the console (c)? ").lower()
+            reading_mode = input(
+                "Would you like to read from a file (f) or the console (c)? "
+            ).lower()
 
             if reading_mode not in ('f', 'c'):
                 print("Invalid reading mode.")
@@ -92,18 +105,21 @@ def message_or_file():
                 if not is_file(filename):
                     print("File not found:", filename)
                     continue
-                process_file(filename,mode,shift)
+                process_file(filename, mode, shift)
                 break
 
             elif reading_mode == 'c':
-                message = input("What message would you like to {}: ".format(mode))
+                message = input(
+                    "What message would you like to {}: ".format(mode))
                 store_value = (mode, message, shift)
                 if mode == "e":
                     encrypt(store_value)
                 elif mode == "d":
                     decrypt(store_value)
                 break
-        another_message = input("Would you like to encrypt or decrypt another message? (y/n): ").lower()
+        another_message = input(
+            "Would you like to encrypt or decrypt another message? (y/n): "
+        ).lower()
         if another_message == "n":
             break
 
