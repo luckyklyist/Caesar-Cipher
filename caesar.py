@@ -110,7 +110,7 @@ def message_or_file():
 
             elif reading_mode == 'c':
                 message = input(
-                    "What message would you like to {}: ".format(mode))
+                    "What message would you like to {}: ".format(mode)).lower()
                 store_value = (mode, message, shift)
                 if mode == "e":
                     encrypt(store_value)
