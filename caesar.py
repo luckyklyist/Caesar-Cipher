@@ -6,6 +6,10 @@ def welcome():
     print("This program encrypts and decrypts text with the Caesar Cipher.")
 
 
+def enter_message(mode):
+    message = input(f"What message would you like to {mode}: ").lower()
+    return message
+
 def encrypt(store_value):
     message, shift = store_value[1:]
 
@@ -109,8 +113,7 @@ def message_or_file():
                 break
 
             elif reading_mode == 'c':
-                message = input(
-                    "What message would you like to {}: ".format(mode)).lower()
+                message =enter_message(mode)
                 store_value = (mode, message, shift)
                 if mode == "e":
                     encrypt(store_value)
