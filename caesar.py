@@ -1,6 +1,5 @@
 import os
 
-
 def welcome():
     print("Welcome to the Caesar Cipher")
     print("This program encrypts and decrypts text with the Caesar Cipher.")
@@ -73,8 +72,11 @@ def is_file(filename):
 
 
 def write_message(msg):
-    with open("result.txt", 'w') as f:
-        f.write(msg)
+    try:
+        with open("result.txt", 'w') as f:
+            f.write(msg)
+    except Exception as e:
+        print(f"Error :{e}")
 
 
 def message_or_file():
